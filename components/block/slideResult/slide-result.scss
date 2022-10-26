@@ -1,0 +1,17 @@
+.b-slide-result {
+  .slide-result-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .content-top {
+      padding-top: 20rem;
+      text-align: center;
+    }
+
+    .content-bottom {
+      margin-top: auto;
+    }
+  }
+}

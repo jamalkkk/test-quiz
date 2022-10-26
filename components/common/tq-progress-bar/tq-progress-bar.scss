@@ -1,0 +1,22 @@
+.b-tq-progress-bar {
+  width: 100%;
+  height: 0.6rem;
+  background-color: var(--tq-white);
+
+  .tq-progress-bar-track {
+    height: 100%;
+    background-color: var(--tq-red);
+
+    &.progress-1 {
+      width: calc(100% / 3);
+    }
+
+    &.progress-2 {
+      width: calc((100% / 3) * 2);
+    }
+
+    &.progress-3 {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.b-slide-main {
+  display: flex;
+  align-items: center;
+
+  .slide-main-content {
+    width: 100%;
+  }
+
+  .slide-main-questions {
+    display: flex;
+    justify-content: space-between;
+  }
+}

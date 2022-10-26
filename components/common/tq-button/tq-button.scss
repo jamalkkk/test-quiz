@@ -1,0 +1,39 @@
+.b-tq-button {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 1.4rem;
+  font-size: 1.8rem;
+  color: var(--tq-white);
+  background: var(--tq-red);
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--tq-red-transparent);
+  }
+
+  &.is-wide {
+    width: 100%;
+    border-radius: 1rem;
+  }
+
+  &.is-short {
+    height: 4rem;
+    font-size: 1.6rem;
+  }
+
+  &.is-medium {
+    height: 5rem;
+  }
+
+  &.is-red {
+    background-color: var(--tq-red);
+  }
+
+  &.is-green {
+    background-color: var(--tq-green);
+  }
+
+  &.is-white {
+    background-color: var(--tq-white-transparent);
+  }
+}
