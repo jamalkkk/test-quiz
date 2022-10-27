@@ -13,6 +13,7 @@ import Background from "../background/Background.vue";
 import SlideMain from "../slideMain/SlideMain.vue";
 import SlideQuestion from "../slideQuestion/SlideQuestion.vue";
 import SlideResult from "../slideResult/SlideResult.vue";
+import SlideGame from "../slideGame/SlideGame.vue";
 
 const Slides = ["main", "question", "result", "game"];
 const WeatherTypes = [
@@ -27,12 +28,13 @@ const WeatherTypes = [
 
 export default {
     components: {
+        Background,
         SlideMain,
         SlideQuestion,
         SlideResult,
+        SlideGame,
         Slides,
         WeatherTypes,
-        Background,
     },
     name: "Home",
     data() {

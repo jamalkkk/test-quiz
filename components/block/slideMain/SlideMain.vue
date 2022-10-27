@@ -5,7 +5,7 @@
         :class="[
             'b-slide-main is-fading-from-left',
             {
-                'is-fading-to-left': isFadingOut,
+                'is-fading-to-left': isFadingToLeft,
             },
         ]"
         name="main"
@@ -23,7 +23,7 @@
                     :onClick="() => goToQuestion(i)"
                 />
             </div>
-            <TQButton class="mt-5" text="Minigame" />
+            <TQButton class="mt-5" text="Minigame" :onClick="goToGame" />
         </div>
     </slide>
 </template>
@@ -47,7 +47,7 @@ export default {
     },
     data() {
         return {
-            isFadingOut: false,
+            isFadingToLeft: false,
         };
     },
     computed: {
@@ -57,10 +57,18 @@ export default {
     },
     methods: {
         goToQuestion(questionNumber) {
-            this.isFadingOut = true;
+            this.isFadingToLeft = true;
+
             setTimeout(() => {
                 this.setActiveSlide("question");
                 this.setActiveQuestion(questionNumber);
+            }, 500);
+        },
+        goToGame() {
+            this.isFadingToLeft = true;
+
+            setTimeout(() => {
+                this.setActiveSlide("game");
             }, 500);
         },
         ...mapMutations({

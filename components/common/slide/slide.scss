@@ -4,7 +4,6 @@ $animation-props: 0.8s cubic-bezier(0.18, 0.9, 0.58, 1) forwards;
   position: relative;
   height: 100%;
   width: 100%;
-  padding: 3rem;
   overflow: hidden;
 
   &.is-fading-from-right {
@@ -29,7 +28,7 @@ $animation-props: 0.8s cubic-bezier(0.18, 0.9, 0.58, 1) forwards;
     height: 100%;
     width: 100%;
     max-width: 40rem;
-    max-height: 60rem;
+    max-height: 80rem;
     margin: 0 auto;
     align-items: center;
   }

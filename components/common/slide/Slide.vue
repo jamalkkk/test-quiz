@@ -3,7 +3,14 @@
 <template>
     <div class="b-slide">
         <BackgroundImage v-if="name" :name="name" />
-        <div class="slide-content">
+        <div
+            :class="[
+                'slide-content',
+                {
+                    'p-5': hasPadding,
+                },
+            ]"
+        >
             <slot />
         </div>
     </div>
@@ -16,6 +23,10 @@ export default {
     components: { BackgroundImage, Snowflakes },
     name: "Slide",
     props: {
+        hasPadding: {
+            type: Boolean,
+            default: true,
+        },
         name: {
             type: String,
             default: "",

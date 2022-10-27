@@ -1,0 +1,99 @@
+.b-slide-game {
+  .slide-game-content {
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .content-top {
+      position: relative;
+      padding: 0 1rem 0 6rem;
+    }
+
+    .content-bottom {
+      margin-top: auto;
+      position: relative;
+    }
+
+    .content-gift {
+      position: absolute;
+      top: -1rem;
+      left: 0;
+      width: 4rem;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .content-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .content-props {
+      z-index: -1;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 20rem;
+      transform: rotate(4deg);
+    }
+
+    .content-snow {
+      position: absolute;
+      bottom: 0;
+      width: 100vw;
+      height: 85%;
+      transform-origin: top center;
+      transform: scale(2);
+      background-color: var(--tq-white);
+    }
+
+    .content-obstacles {
+      position: relative;
+      width: 100%;
+      height: 3rem;
+
+      .obstacles-obstacle {
+        position: absolute;
+        right: -30%;
+        bottom: -0.5rem;
+        animation: moveHorizontally 10s linear forwards infinite;
+      }
+    }
+
+    .content-gifts {
+      position: absolute;
+      width: 100%;
+      height: 3rem;
+      top: -10rem;
+
+      .gifts-gift {
+        position: absolute;
+        width: 2rem;
+        right: -30%;
+        transform: rotate(-4deg);
+        animation: moveHorizontally 10s linear forwards infinite;
+      }
+    }
+  }
+
+  .content-santa {
+    position: absolute;
+    top: -0.5rem;
+  }
+}
+
+@keyframes moveHorizontally {
+  0% {
+    right: -30%;
+  }
+
+  100% {
+    right: 130%;
+  }
+}

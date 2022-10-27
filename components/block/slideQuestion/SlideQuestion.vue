@@ -11,9 +11,6 @@
         ]"
         name="question"
     >
-        <!-- <div class="slide-question-animal">
-            <TQImage class="animal-image" :name="currentQuestion.animal" />
-        </div> -->
         <div class="slide-question-content">
             <div class="content-top">
                 <TQText :text="currentQuestion.day" :fontSize="1" />

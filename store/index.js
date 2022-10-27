@@ -1,9 +1,10 @@
 export const state = () => ({
   isAnswerCorrect: false,
-  activeSlide: "main",
+  activeSlide: "game",
   activeQuestion: 0,
   level: 1,
   weather: "others",
+  santaState: "ride",
 });
 
 export const mutations = {
@@ -21,5 +22,8 @@ export const mutations = {
   },
   setWeather(state, value) {
     state.weather = value;
+  },
+  setSantaState(state, value) {
+    state.santaState = value;
   },
 };

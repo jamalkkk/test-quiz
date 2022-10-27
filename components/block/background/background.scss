@@ -34,7 +34,33 @@
   &.is-weather-red {
     background-color: var(--tq-red);
   }
+
   &.is-weather-green {
     background-color: var(--tq-green-transparent);
+  }
+
+  .background-game {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+
+    .game-image {
+      height: 100%;
+      animation: moveGameBG 100s linear infinite forwards;
+    }
+  }
+}
+
+// <---- o
+@keyframes moveGameBG {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
   }
 }

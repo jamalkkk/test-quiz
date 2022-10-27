@@ -2,18 +2,24 @@
 
 <template>
     <div :class="`b-background is-weather-${color}`">
+        <div v-if="isGame" class="background-game">
+            <TQImage class="game-image" name="landschaft" :isSVG="false" />
+        </div>
         <Snowflakes />
     </div>
 </template>
 
 <script>
 import Snowflakes from "../snowflakes/Snowflakes.vue";
+import TQImage from "../../common/tq-image/TQImage.vue";
+
 export default {
-    components: { Snowflakes },
+    components: { Snowflakes, TQImage },
     name: "Background",
 
     data() {
         return {
+            isGame: false,
             color: "other",
         };
     },
@@ -23,6 +29,7 @@ export default {
             return this.$store.state.weather.toLowerCase();
         },
         activeSlide() {
+            this.isGame = this.$store.state.activeSlide === "game";
             return this.$store.state.activeSlide;
         },
         isAnswerCorrect() {
@@ -32,7 +39,6 @@ export default {
     watch: {
         weather(value) {
             this.color = value.toLowerCase();
-            // return this.$store.state.weather.toLowerCase();
         },
         activeSlide(value) {
             this.color =
@@ -41,6 +47,7 @@ export default {
                         ? "green"
                         : "red"
                     : this.weather;
+            this.isGame = value === "game";
         },
     },
 };
