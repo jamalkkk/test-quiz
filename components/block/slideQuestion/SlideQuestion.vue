@@ -9,7 +9,11 @@
                 'is-fading-to-left': isFadingToLeft,
             },
         ]"
+        name="question"
     >
+        <!-- <div class="slide-question-animal">
+            <TQImage class="animal-image" :name="currentQuestion.animal" />
+        </div> -->
         <div class="slide-question-content">
             <div class="content-top">
                 <TQText :text="currentQuestion.day" :fontSize="1" />
@@ -26,6 +30,11 @@
             </div>
 
             <div class="content-bottom">
+                <TQImage
+                    class="content-animal"
+                    :name="currentQuestion.animal"
+                />
+
                 <TQText
                     class="mb-5"
                     :text="currentQuestion.text"
@@ -59,6 +68,7 @@ import TQButton from "../../common/tq-button/TQButton.vue";
 import TQIcon from "../../common/tq-icon/TQIcon.vue";
 import TQProgressBar from "../../common/tq-progress-bar/TQProgressBar.vue";
 import TQText from "../../common/tq-text/TQText.vue";
+import TQImage from "../../common/tq-image/TQImage.vue";
 
 import { mapMutations } from "vuex";
 
@@ -74,6 +84,7 @@ const Questions = [
         text: "The bear has a candy in his arms. Which color does it have?",
         answers: ["red and white", "red and green", "white and green"],
         correct: 0,
+        animal: "bear",
     },
     {
         day: "Tag 6",
@@ -81,6 +92,7 @@ const Questions = [
         text: "Rudolf likes to have christmas balls on his antlers. How many are there?",
         answers: ["definitely two", "i guess three", "one, no wait, five"],
         correct: 1,
+        animal: "deer",
     },
     {
         day: "Tag 8",
@@ -88,6 +100,7 @@ const Questions = [
         text: "Uhu, the wise owl, likes to know how many letters her name contains?",
         answers: ["5000", "10", "3"],
         correct: 2,
+        animal: "owl",
     },
 ];
 
@@ -96,7 +109,15 @@ const Questions = [
 */
 
 export default {
-    components: { Slide, TQText, TQButton, TQIcon, Questions, TQProgressBar },
+    components: {
+        Slide,
+        TQText,
+        TQButton,
+        TQIcon,
+        Questions,
+        TQProgressBar,
+        TQImage,
+    },
     name: "SlideQuestion",
     data() {
         return {

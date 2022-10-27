@@ -22,6 +22,7 @@
                 <TQButton
                     text="back"
                     btnHight="medium"
+                    bgColor="green"
                     :onClick="goToMainSlide"
                 />
             </div>

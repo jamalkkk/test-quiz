@@ -1,0 +1,14 @@
+.b-background-image {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  top: 0;
+
+  .background-image-solid {
+    width: 100%;
+    height: 100%;
+    background-color: var(--tq-red-transparent);
+  }
+}

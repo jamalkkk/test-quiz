@@ -1,0 +1,40 @@
+.b-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  top: 0;
+  background-color: var(--tq-others);
+  transition: all 1s ease;
+
+  &.is-weather-clear {
+    background-color: var(--tq-clear);
+  }
+
+  &.is-weather-thunderstorm {
+    background-color: var(--tq-thunderstorm);
+  }
+
+  &.is-weather-drizzle {
+    background-color: var(--tq-drizzle);
+  }
+
+  &.is-weather-rain {
+    background-color: var(--tq-rain);
+  }
+
+  &.is-weather-snow {
+    background-color: var(--tq-snow);
+  }
+
+  &.is-weather-clouds {
+    background-color: var(--tq-clouds);
+  }
+
+  &.is-weather-red {
+    background-color: var(--tq-red);
+  }
+  &.is-weather-green {
+    background-color: var(--tq-green-transparent);
+  }
+}

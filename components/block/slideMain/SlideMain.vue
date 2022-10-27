@@ -8,6 +8,7 @@
                 'is-fading-to-left': isFadingOut,
             },
         ]"
+        name="main"
     >
         <div class="slide-main-content">
             <TQText text="Welcome" :fontSize="4" />
