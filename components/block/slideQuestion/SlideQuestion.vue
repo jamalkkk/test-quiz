@@ -5,7 +5,8 @@
         :class="[
             'b-slide-question is-fading-from-right',
             {
-                'is-fading-to-right': isFadingOut,
+                'is-fading-to-right': isFadingToRight,
+                'is-fading-to-left': isFadingToLeft,
             },
         ]"
     >
@@ -43,7 +44,8 @@
                 </div>
                 <TQProgressBar
                     class="mt-5"
-                    :progress="isCorrect ? level : level - 1"
+                    :isCorrect="isCorrect"
+                    :level="level"
                 />
             </div>
         </div>
@@ -100,7 +102,8 @@ export default {
         return {
             isSubmitted: false,
             isCorrect: false,
-            isFadingOut: false,
+            isFadingToRight: false,
+            isFadingToLeft: false,
             questions: Questions,
         };
     },
@@ -126,8 +129,12 @@ export default {
                 target.classList.add(`is-${this.isCorrect ? "green" : "red"}`);
 
                 setTimeout(() => {
-                    this.goToResultSlide();
-                }, 1500);
+                    this.isFadingToLeft = true;
+
+                    setTimeout(() => {
+                        this.goToResultSlide();
+                    }, 500);
+                }, 1200);
             }
         },
         goToResultSlide() {
@@ -136,7 +143,7 @@ export default {
         },
         goToMainSlide() {
             if (!this.isSubmitted) {
-                this.isFadingOut = true;
+                this.isFadingToRight = true;
 
                 setTimeout(() => {
                     this.setActiveSlide("main");

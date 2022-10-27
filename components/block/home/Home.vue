@@ -34,12 +34,5 @@ export default {
             return this.$store.state.activeSlide;
         },
     },
-    watch: {
-        // activeSlide(value) {
-        //     if (value && !this.activeIndex) {
-        //         this.slideTo(1);
-        //     }
-        // },
-    },
 };
 </script>

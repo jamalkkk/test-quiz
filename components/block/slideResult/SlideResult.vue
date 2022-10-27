@@ -1,7 +1,14 @@
 <style lang="scss" src="./slide-result.scss"></style>
 
 <template>
-    <slide class="b-slide-result">
+    <slide
+        :class="[
+            'b-slide-result is-fading-from-right',
+            {
+                'is-fading-to-right': isFadingToRight,
+            },
+        ]"
+    >
         <div class="slide-result-content">
             <div class="content-top">
                 <TQText
@@ -22,7 +29,6 @@
     </slide>
 </template>
 
-
 <script>
 import Slide from "../../common/slide/Slide.vue";
 import TQButton from "../../common/tq-button/TQButton.vue";
@@ -32,6 +38,11 @@ import { mapMutations } from "vuex";
 export default {
     components: { Slide, TQText, TQButton },
     name: "SlideResult",
+    data() {
+        return {
+            isFadingToRight: false,
+        };
+    },
     computed: {
         isAnswerCorrect() {
             return this.$store.state.isAnswerCorrect;
@@ -45,9 +56,13 @@ export default {
     },
     methods: {
         goToMainSlide() {
-            this.setActiveSlide("main");
-            this.setIsAnswerCorrect(false);
-            this.setActiveQuestion(0);
+            this.isFadingToRight = true;
+
+            setTimeout(() => {
+                this.setActiveSlide("main");
+                this.setIsAnswerCorrect(false);
+                this.setActiveQuestion(0);
+            }, 500);
         },
         ...mapMutations({
             updateLevel: "updateLevel",
