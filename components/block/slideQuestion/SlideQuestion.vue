@@ -1,12 +1,27 @@
 <style lang="scss" src="./slide-question.scss"></style>
 
 <template>
-    <slide class="b-slide-question">
+    <slide
+        :class="[
+            'b-slide-question is-fading-from-right',
+            {
+                'is-fading-to-right': isFadingOut,
+            },
+        ]"
+    >
         <div class="slide-question-content">
             <div class="content-top">
-                <TQText text="Tag 6" :fontSize="1" />
-                <TQText class="mt-2" text="Rudolf" :fontSize="3" />
-                <TQIcon class="content-close" name="close" />
+                <TQText :text="currentQuestion.day" :fontSize="1" />
+                <TQText
+                    class="mt-2"
+                    :text="currentQuestion.name"
+                    :fontSize="3"
+                />
+                <TQIcon
+                    class="content-close"
+                    name="close"
+                    :onClick="goToMainSlide"
+                />
             </div>
 
             <div class="content-bottom">
@@ -23,10 +38,13 @@
                         :text="answer"
                         btnHight="short"
                         bgColor="white"
-                        @click="chooseAnswer"
+                        :onClick="(e) => chooseAnswer(e, i)"
                     />
                 </div>
-                <TQProgressBar class="mt-5" />
+                <TQProgressBar
+                    class="mt-5"
+                    :progress="isCorrect ? level : level - 1"
+                />
             </div>
         </div>
     </slide>
@@ -40,45 +58,97 @@ import TQIcon from "../../common/tq-icon/TQIcon.vue";
 import TQProgressBar from "../../common/tq-progress-bar/TQProgressBar.vue";
 import TQText from "../../common/tq-text/TQText.vue";
 
+import { mapMutations } from "vuex";
+
+/*
+    Dynamic approcah: Usage of enpoint connected to the backend, to obtan a list of 
+    all questions.
+*/
+
 const Questions = [
     {
+        day: "Tag 7",
+        name: "Bär",
         text: "The bear has a candy in his arms. Which color does it have?",
-        answers: ["Blah Blah", "Blah Blah", "Blah Blah"],
-        correctAnswer: 2,
+        answers: ["red and white", "red and green", "white and green"],
+        correct: 0,
     },
     {
-        text: "Blah Blah 2",
-        answers: ["Blah Blah", "Blah Blah", "Blah Blah"],
-        correctAnswer: 2,
+        day: "Tag 6",
+        name: "Rodulf",
+        text: "Rudolf likes to have christmas balls on his antlers. How many are there?",
+        answers: ["definitely two", "i guess three", "one, no wait, five"],
+        correct: 1,
     },
     {
-        text: "Blah Blah 3",
-        answers: ["Blah Blah", "Blah Blah", "Blah Blah"],
-        correctAnswer: 2,
+        day: "Tag 8",
+        name: "Uhu",
+        text: "Uhu, the wise owl, likes to know how many letters her name contains?",
+        answers: ["5000", "10", "3"],
+        correct: 2,
     },
 ];
+
+/*
+    --------------------------------------------------------------------------------
+*/
+
 export default {
     components: { Slide, TQText, TQButton, TQIcon, Questions, TQProgressBar },
     name: "SlideQuestion",
-    props: {
-        name: {
-            type: String,
-            default: "",
-        },
-    },
     data() {
         return {
+            isSubmitted: false,
+            isCorrect: false,
+            isFadingOut: false,
             questions: Questions,
-            currentQuestion: Questions[0],
         };
     },
     computed: {
-        lastUnlockedQuestion() {
-            return this.$store.state.lastUnlockedQuestion;
+        level() {
+            return this.$store.state.level;
+        },
+        currentQuestion() {
+            return this.questions[this.$store.state.activeQuestion - 1];
+        },
+    },
+    watch: {
+        activeQuestion(value) {
+            this.currentQuestion = this.questions[value];
         },
     },
     methods: {
-        chooseAnswer() {},
+        chooseAnswer({ target }, answer) {
+            if (!this.isSubmitted) {
+                this.isSubmitted = true;
+                this.isCorrect = answer === this.currentQuestion.correct;
+
+                target.classList.add(`is-${this.isCorrect ? "green" : "red"}`);
+
+                setTimeout(() => {
+                    this.goToResultSlide();
+                }, 1500);
+            }
+        },
+        goToResultSlide() {
+            this.setIsAnswerCorrect(this.isCorrect);
+            this.setActiveSlide("result");
+        },
+        goToMainSlide() {
+            if (!this.isSubmitted) {
+                this.isFadingOut = true;
+
+                setTimeout(() => {
+                    this.setActiveSlide("main");
+                    this.setActiveQuestion(0);
+                }, 500);
+            }
+        },
+        ...mapMutations({
+            setActiveSlide: "setActiveSlide",
+            setIsAnswerCorrect: "setIsAnswerCorrect",
+            setActiveQuestion: "setActiveQuestion",
+        }),
     },
 };
 </script>

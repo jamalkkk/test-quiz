@@ -2,18 +2,17 @@
 
 <template>
     <div class="b-tq-progress-bar">
-        <div
-            :class="`tq-progress-bar-track progress-${lastUnlockedQuestion}`"
-        />
+        <div :class="`tq-progress-bar-track progress-${progress}`" />
     </div>
 </template>
 
 <script>
 export default {
     name: "TQProgressBar",
-    computed: {
-        lastUnlockedQuestion() {
-            return this.$store.state.lastUnlockedQuestion;
+    props: {
+        progress: {
+            type: Number,
+            default: 0,
         },
     },
 };

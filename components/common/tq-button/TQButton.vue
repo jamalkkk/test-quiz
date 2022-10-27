@@ -13,6 +13,7 @@
         ]"
         type="button"
         :disabled="!isActive"
+        @click="onClick"
     >
         {{ text }}
     </button>
@@ -41,6 +42,12 @@ export default {
         text: {
             type: String,
             default: "1",
+        },
+        onClick: {
+            type: Function,
+            default() {
+                return null;
+            },
         },
     },
     data() {

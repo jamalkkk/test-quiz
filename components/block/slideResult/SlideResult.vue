@@ -6,13 +6,17 @@
             <div class="content-top">
                 <TQText
                     class="content-text"
-                    :text="isRight ? 'Yay!' : 'No!'"
+                    :text="isAnswerCorrect ? 'Yay!' : 'No!'"
                     :fontSize="5"
                 />
             </div>
 
             <div class="content-bottom">
-                <TQButton text="Back" btnHight="medium" @click="chooseAnswer" />
+                <TQButton
+                    text="Back"
+                    btnHight="medium"
+                    :onClick="goToMainSlide"
+                />
             </div>
         </div>
     </slide>
@@ -23,23 +27,43 @@
 import Slide from "../../common/slide/Slide.vue";
 import TQButton from "../../common/tq-button/TQButton.vue";
 import TQText from "../../common/tq-text/TQText.vue";
+import { mapMutations } from "vuex";
 
 export default {
     components: { Slide, TQText, TQButton },
     name: "SlideResult",
-    props: {
-        isRight: {
-            type: Boolean,
-            default: true,
-        },
-    },
     computed: {
-        lastUnlockedQuestion() {
-            return this.$store.state.lastUnlockedQuestion;
+        isAnswerCorrect() {
+            return this.$store.state.isAnswerCorrect;
+        },
+        activeQuestion() {
+            return this.$store.state.activeQuestion;
+        },
+        level() {
+            return this.$store.state.level;
         },
     },
     methods: {
-        chooseAnswer() {},
+        goToMainSlide() {
+            this.setActiveSlide("main");
+            this.setIsAnswerCorrect(false);
+            this.setActiveQuestion(0);
+        },
+        ...mapMutations({
+            updateLevel: "updateLevel",
+            setActiveSlide: "setActiveSlide",
+            setIsAnswerCorrect: "setIsAnswerCorrect",
+            setActiveQuestion: "setActiveQuestion",
+        }),
+    },
+    mounted() {
+        if (
+            this.isAnswerCorrect &&
+            this.level < 4 &&
+            this.activeQuestion === this.level
+        ) {
+            this.updateLevel();
+        }
     },
 };
 </script>

@@ -4,12 +4,8 @@
   border-radius: 1.4rem;
   font-size: 1.8rem;
   color: var(--tq-white);
-  background: var(--tq-red);
-
-  &:disabled {
-    cursor: not-allowed;
-    background-color: var(--tq-red-transparent);
-  }
+  background-color: var(--tq-red);
+  transition: all 0.5s ease-out;
 
   &.is-wide {
     width: 100%;
@@ -25,15 +21,20 @@
     height: 5rem;
   }
 
+  &.is-white {
+    background-color: var(--tq-white-transparent);
+  }
+
   &.is-red {
     background-color: var(--tq-red);
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: var(--tq-red-transparent);
+    }
   }
 
   &.is-green {
     background-color: var(--tq-green);
-  }
-
-  &.is-white {
-    background-color: var(--tq-white-transparent);
   }
 }

@@ -1,12 +1,24 @@
 .b-slide-main {
+  position: relative;
   display: flex;
   align-items: center;
+  // opacity: 0;
+  // transform: translateX(-250%);
+
+  // &.is-fading-in {
+  //   animation: fadeIn 1s cubic-bezier(0.18, 0.9, 0.58, 1) forwards;
+  // }
+
+  // &.is-fading-out {
+  //   animation: fadeOut 1s cubic-bezier(0.18, 0.9, 0.58, 1) forwards;
+  // }
 
   .slide-main-content {
     width: 100%;
   }
 
   .slide-main-questions {
+    position: relative;
     display: flex;
     justify-content: space-between;
   }

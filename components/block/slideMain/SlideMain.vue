@@ -1,7 +1,14 @@
 <style lang="scss" src="./slide-main.scss"></style>
 
 <template>
-    <slide class="b-slide-main">
+    <slide
+        :class="[
+            'b-slide-main is-fading-from-left',
+            {
+                'is-fading-to-left': isFadingOut,
+            },
+        ]"
+    >
         <div class="slide-main-content">
             <TQText text="Welcome" :fontSize="4" />
             <div class="slide-main-questions mt-5">
@@ -11,7 +18,8 @@
                     class="slide-main-question"
                     :text="`${i}`"
                     :isWide="false"
-                    :isActive="i <= lastUnlockedQuestion"
+                    :isActive="level >= i"
+                    :onClick="() => goToQuestion(i)"
                 />
             </div>
             <TQButton class="mt-5" text="Minigame" />
@@ -24,6 +32,9 @@
 import Slide from "../../common/slide/Slide.vue";
 import TQButton from "../../common/tq-button/TQButton.vue";
 import TQText from "../../common/tq-text/TQText.vue";
+
+import { mapMutations } from "vuex";
+
 export default {
     components: { Slide, TQText, TQButton },
     name: "SlideMain",
@@ -34,12 +45,27 @@ export default {
         },
     },
     data() {
-        return {};
+        return {
+            isFadingOut: false,
+        };
     },
     computed: {
-        lastUnlockedQuestion() {
-            return this.$store.state.lastUnlockedQuestion;
+        level() {
+            return this.$store.state.level;
         },
+    },
+    methods: {
+        goToQuestion(questionNumber) {
+            this.isFadingOut = true;
+            setTimeout(() => {
+                this.setActiveSlide("question");
+                this.setActiveQuestion(questionNumber);
+            }, 500);
+        },
+        ...mapMutations({
+            setActiveSlide: "setActiveSlide",
+            setActiveQuestion: "setActiveQuestion",
+        }),
     },
 };
 </script>

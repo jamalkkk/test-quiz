@@ -12,19 +12,21 @@ export default {
             type: String,
             default: "close",
         },
+        onClick: {
+            type: Function,
+            default() {
+                return null;
+            },
+        },
     },
     data() {
         return {};
     },
     computed: {
         html() {
-            return require(`~/assets/img/close.svg?raw`);
+            return require(`~/assets/img/${this.name}.svg?raw`);
         },
     },
-    methods: {
-        onClick() {
-            console.log("hoooo[");
-        },
-    },
+    methods: {},
 };
 </script>

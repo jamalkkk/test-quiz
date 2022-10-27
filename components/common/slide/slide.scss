@@ -1,8 +1,101 @@
+$animation-props: 1s cubic-bezier(0.18, 0.9, 0.58, 1) forwards;
+
 .b-slide {
+  position: relative;
   height: 100%;
   width: 100%;
   max-width: 40rem;
   max-height: 60rem;
   margin: 0 auto;
-  background-color: coral;
+
+  &.is-fading-from-left {
+    animation: fadeFromLeft $animation-props;
+  }
+
+  &.is-fading-to-left {
+    animation: fadeToLeft $animation-props;
+  }
+
+  &.is-fading-from-right {
+    animation: fadeFromRight $animation-props;
+  }
+
+  &.is-fading-to-right {
+    animation: fadeToRight $animation-props;
+  }
+}
+
+@keyframes fadeToLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  30% {
+    transform: translateX(2%);
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    // opacity: 0;
+    transform: translateX(-150%);
+  }
+}
+
+@keyframes fadeFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-150%);
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  80% {
+    transform: translateX(2%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeToRight {
+  0% {
+    transform: translateX(0);
+  }
+
+  30% {
+    transform: translateX(-2%);
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+@keyframes fadeFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(250%);
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  80% {
+    transform: translateX(-2%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
