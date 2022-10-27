@@ -4,5 +4,30 @@
   display: flex;
   padding: 3rem;
   align-items: center;
-  background: #46956d;
+  background-color: var(--tq-others);
+  transition: all 1s ease;
+
+  &.is-weather-clear {
+    background-color: var(--tq-clear);
+  }
+
+  &.is-weather-thunderstorm {
+    background-color: var(--tq-thunderstorm);
+  }
+
+  &.is-weather-drizzle {
+    background-color: var(--tq-drizzle);
+  }
+
+  &.is-weather-rain {
+    background-color: var(--tq-rain);
+  }
+
+  &.is-weather-snow {
+    background-color: var(--tq-snow);
+  }
+
+  &.is-weather-clouds {
+    background-color: var(--tq-clouds);
+  }
 }

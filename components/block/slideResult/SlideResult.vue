@@ -20,7 +20,7 @@
 
             <div class="content-bottom">
                 <TQButton
-                    text="Back"
+                    text="back"
                     btnHight="medium"
                     :onClick="goToMainSlide"
                 />

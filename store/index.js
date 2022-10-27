@@ -1,8 +1,9 @@
 export const state = () => ({
-  level: 1,
+  isAnswerCorrect: false,
   activeSlide: "main",
   activeQuestion: 0,
-  isAnswerCorrect: false,
+  level: 1,
+  weather: "others",
 });
 
 export const mutations = {
@@ -17,5 +18,8 @@ export const mutations = {
   },
   setIsAnswerCorrect(state, value) {
     state.isAnswerCorrect = value;
+  },
+  setWeather(state, value) {
+    state.weather = value;
   },
 };

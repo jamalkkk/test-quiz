@@ -1,7 +1,7 @@
 <style lang="scss" src="./home.scss"></style>
 
 <template>
-    <div class="b-home">
+    <div :class="`b-home is-weather-${weather}`">
         <component :is="`slide-${activeSlide}`" />
     </div>
 </template>
@@ -13,9 +13,18 @@ import SlideQuestion from "../slideQuestion/SlideQuestion.vue";
 import SlideResult from "../slideResult/SlideResult.vue";
 
 const Slides = ["main", "question", "result", "game"];
+const WeatherTypes = [
+    "Clear",
+    "Thunderstorm",
+    "Drizzle",
+    "rain",
+    "Snow",
+    "Clouds",
+    "Others",
+];
 
 export default {
-    components: { Slides, SlideMain, SlideQuestion, SlideResult },
+    components: { SlideMain, SlideQuestion, SlideResult, Slides, WeatherTypes },
     name: "Home",
     props: {
         name: {
@@ -30,6 +39,9 @@ export default {
         };
     },
     computed: {
+        weather() {
+            return this.$store.state.weather.toLowerCase();
+        },
         activeSlide() {
             return this.$store.state.activeSlide;
         },

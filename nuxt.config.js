@@ -36,6 +36,10 @@ export default {
     pathPrefix: false,
   },
 
+  env: {
+    openWeatherMapAPIKey: process.env.OPENWEATHERMAP_API_KEY,
+  },
+
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: ["@nuxtjs/google-fonts", "@nuxtjs/svg"],
 

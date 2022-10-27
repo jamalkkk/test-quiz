@@ -134,7 +134,7 @@ export default {
                     setTimeout(() => {
                         this.goToResultSlide();
                     }, 500);
-                }, 1200);
+                }, 1000);
             }
         },
         goToResultSlide() {

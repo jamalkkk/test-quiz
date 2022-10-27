@@ -1,18 +1,10 @@
-:root {
-  --tq-white: #fff;
-  --tq-red: #f1424f;
-  --tq-green: #00944a;
-  --tq-white-transparent: #ffffff4d;
-  --tq-red-transparent: #f1424e80;
-}
-
 html {
   font-size: 10px;
+  background-color: var(--tq-others);
 
   .app {
     height: 100vh;
     width: 100vw;
-    background: aquamarine;
   }
 }
 
