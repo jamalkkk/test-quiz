@@ -72,6 +72,7 @@ export default {
             }, 500);
         },
         ...mapMutations({
+            setWeather: "setWeather",
             setActiveSlide: "setActiveSlide",
             setActiveQuestion: "setActiveQuestion",
         }),

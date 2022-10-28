@@ -1,7 +1,15 @@
 <style lang="scss" src="./santa.scss"></style>
 
 <template>
-    <div class="content-santa">
+    <div
+        :class="[
+            'b-santa',
+            {
+                'is-jumping': santaState === 'jump',
+                'is-crashing': santaState === 'crash',
+            },
+        ]"
+    >
         <TQImage :name="`santa-${santaState}`" />
     </div>
 </template>
@@ -13,19 +21,17 @@ import TQImage from "../../../common/tq-image/TQImage.vue";
 export default {
     components: { TQImage },
     name: "Santa",
+    data() {
+        return {
+            is: "ride",
+        };
+    },
     computed: {
         santaState() {
             return this.$store.state.santaState;
         },
     },
     methods: {
-        jump() {
-            this.setSantaState("jump");
-
-            setTimeout(() => {
-                this.setSantaState("ride");
-            }, 1000);
-        },
         ...mapMutations({
             setSantaState: "setSantaState",
         }),

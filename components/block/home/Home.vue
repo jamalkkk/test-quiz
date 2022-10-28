@@ -1,7 +1,7 @@
 <style lang="scss" src="./home.scss"></style>
 
 <template>
-    <div :class="`b-home is-weather-${weather}`">
+    <div class="b-home">
         <Background />
         <component :is="`slide-${activeSlide}`" />
     </div>
@@ -44,9 +44,6 @@ export default {
         };
     },
     computed: {
-        weather() {
-            return this.$store.state.weather.toLowerCase();
-        },
         activeSlide() {
             return this.$store.state.activeSlide;
         },

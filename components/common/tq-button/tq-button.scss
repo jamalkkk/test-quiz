@@ -37,4 +37,8 @@
   &.is-green {
     background-color: var(--tq-green);
   }
+
+  &:active {
+    opacity: 0.7;
+  }
 }

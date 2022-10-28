@@ -48,6 +48,12 @@ export default {
                         : "red"
                     : this.weather;
             this.isGame = value === "game";
+
+            if (this.isGame) {
+                this.color = "blue";
+            } else {
+                this.weather.toLowerCase();
+            }
         },
     },
 };

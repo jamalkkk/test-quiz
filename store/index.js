@@ -5,12 +5,13 @@ export const state = () => ({
   level: 1,
   weather: "others",
   santaState: "ride",
+  score: 0,
+  highscore: 0,
+  collidingGifts: [],
+  collidingObstacles: [],
 });
 
 export const mutations = {
-  updateLevel(state) {
-    state.level++;
-  },
   setActiveSlide(state, value) {
     state.activeSlide = value;
   },
@@ -25,5 +26,20 @@ export const mutations = {
   },
   setSantaState(state, value) {
     state.santaState = value;
+  },
+  setScore(state, value) {
+    state.score = value;
+    if (value > state.highscore) {
+      state.highscore = value;
+    }
+  },
+  setCollidingGifts(state, value) {
+    state.collidingGifts = value;
+  },
+  setCollidingObstacles(state, value) {
+    state.collidingObstacles = value;
+  },
+  updateLevel(state) {
+    state.level++;
   },
 };

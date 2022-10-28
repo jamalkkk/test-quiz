@@ -39,6 +39,10 @@
     background-color: var(--tq-green-transparent);
   }
 
+  &.is-weather-blue {
+    background-color: var(--tq-blue);
+  }
+
   .background-game {
     position: absolute;
     width: 100%;

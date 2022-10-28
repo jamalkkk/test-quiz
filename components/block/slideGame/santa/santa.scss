@@ -1,2 +1,6 @@
 .b-santa {
+  transition: transform 0.3s ease;
+  &.is-jumping {
+    transform: translateY(-200%);
+  }
 }
