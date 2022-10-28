@@ -126,7 +126,6 @@ export default {
         },
         collidingObstacles(value) {
             if (this.santaState === "ride" && value.length) {
-                // this.setScore(this.score + this.collidingObstacles.length);
                 this.setSantaState("crash");
                 this.resetGame();
             }
@@ -170,21 +169,6 @@ export default {
                 }, 200);
             }
         },
-        // checkPropCollision(i, overlap) {
-        //     const isPropColliding = this.checkCollision(
-        //         document.getElementById(`${overlap}-${i}`), overlap === "gift" ?
-        //         "overlapJump" : "overlapCrash"
-        //     );
-        //     let updatedCollidingProps = [...this.collidingGifts];
-        //     const collidingGiftIndex = updatedCollidingGifts.indexOf(i);
-        //     const collidingGiftIndexAdded = collidingGiftIndex !== -1;
-        //     if (isPropColliding) {
-        //         if (!collidingGiftIndexAdded) updatedCollidingGifts.push(i);
-        //     } else if (collidingGiftIndexAdded) {
-        //         updatedCollidingGifts.splice(collidingGiftIndex, 1);
-        //     }
-        //     this.setCollidingGifts(updatedCollidingGifts);
-        // },
         checkGiftCollision(i) {
             const isGiftColliding = this.checkCollision(
                 document.getElementById(`gift-${i}`),
@@ -241,7 +225,6 @@ export default {
                 setTimeout(() => {
                     this.setSantaState("ride");
                     this.resetScore();
-                    // this.$forceUpdate();
                     this.isResettingGame = false;
                 }, 1000);
             }

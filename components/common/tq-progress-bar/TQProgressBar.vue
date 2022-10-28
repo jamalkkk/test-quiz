@@ -33,8 +33,6 @@ export default {
     },
     watch: {
         isCorrect(value) {
-            console.log("isCorrect: ", value);
-
             if (value && this.activeQuestion === this.level) {
                 this.increase++;
             }
