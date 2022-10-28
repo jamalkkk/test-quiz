@@ -2,6 +2,7 @@
 
 <template>
     <div v-if="isSVG" class="b-tq-image" v-html="html" />
+
     <img
         v-else
         class="lazyload"

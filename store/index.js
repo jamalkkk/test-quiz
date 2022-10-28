@@ -1,6 +1,6 @@
 export const state = () => ({
   isAnswerCorrect: false,
-  activeSlide: "game",
+  activeSlide: "main",
   activeQuestion: 0,
   level: 1,
   weather: "others",

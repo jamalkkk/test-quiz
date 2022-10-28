@@ -3,6 +3,16 @@
 <template>
     <div class="b-background-image">
         <TQImage :name="name" />
+        <div v-if="name === 'main'" class="main-windmills">
+            <TQImage
+                v-for="i in 4"
+                :key="i"
+                :class="`main-windmill windmill-${i}`"
+                name="windmill"
+            />
+        </div>
+    </div>
+</template>
     </div>
 </template>
 
