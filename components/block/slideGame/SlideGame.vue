@@ -88,6 +88,8 @@ export default {
             isFadingToRight: false,
             isResettingGame: false,
             shouldShuffle: false,
+            overlapIntervals: [],
+            overlapObstaclesInterval: null,
             overlapJumpInterval: null,
             amount: 6,
         };
@@ -135,6 +137,10 @@ export default {
         goToMainSlide() {
             this.isFadingToRight = true;
 
+            this.overlapIntervals.forEach((interval) =>
+                clearInterval(interval)
+            );
+
             setTimeout(() => {
                 this.setActiveSlide("main");
             }, 500);
@@ -145,28 +151,20 @@ export default {
         jump() {
             if (this.santaState === "ride") {
                 this.setSantaState("jump");
-                this.checkOverlapJump();
 
                 setTimeout(() => {
-                    clearInterval(this.overlapJumpInterval);
                     this.setSantaState("ride");
                 }, 1200);
             }
         },
-        checkOverlapJump() {
-            this.overlapJumpInterval = setInterval(() => {
-                const isOverlpaing = this.checkCollision(
-                    document.getElementById("santa"),
-                    "overlapJump"
-                );
-            }, 200);
-        },
         checkPropsCollision() {
             for (let i = 1; i <= this.amount; i++) {
-                setInterval(() => {
-                    this.checkGiftCollision(i);
-                    this.checkObstacleCollision(i);
-                }, 200);
+                this.overlapIntervals.push(
+                    setInterval(() => {
+                        this.checkGiftCollision(i);
+                        this.checkObstacleCollision(i);
+                    }, 200)
+                );
             }
         },
         checkGiftCollision(i) {

@@ -2,7 +2,7 @@
 
 <template>
     <div :class="`b-background is-weather-${color}`">
-        <div v-if="isGame" class="background-game">
+        <div v-if="isGame" class="background-game is-active">
             <TQImage class="game-image" name="landschaft" :isSVG="false" />
         </div>
         <Snowflakes />
